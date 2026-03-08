@@ -2,6 +2,10 @@
 
 A simple and efficient backend API for a school management system built using **Node.js, Express, and MySQL**. This API allows you to add schools to a database and retrieve them seamlessly sorted by their proximity to a specific user's geographic location.
 
+### 🌍 Live API URL
+**Base URL:** `https://educase-school-management-system.onrender.com`
+*(You can test all endpoints directly against this live server!)*
+
 ## 🚀 Key Technologies Used
 - **Node.js** & **Express.js** (Fast & Minimal Web Framework)
 - **MySQL2** (Promise-based MySQL client for Node)

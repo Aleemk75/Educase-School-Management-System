@@ -34,6 +34,14 @@ const addSchool = async (req, res) => {
             return res.status(400).json({ error: "Latitude and longitude must be valid numbers." });
         }
 
+        // Check for duplicates
+        const checkQuery = "SELECT id FROM schools WHERE LOWER(name) = ? AND LOWER(address) = ?";
+        const [existingSchools] = await db.execute(checkQuery, [name.trim().toLowerCase(), address.trim().toLowerCase()]);
+
+        if (existingSchools.length > 0) {
+            return res.status(409).json({ error: "A school with this exact name and address already exists." });
+        }
+
         const sqlQuery = "INSERT INTO schools (name, address, latitude, longitude) VALUES (?, ?, ?, ?)";
         const values = [name.trim(), address.trim(), latNum, lonNum];
 
